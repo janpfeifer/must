@@ -1,5 +1,9 @@
 # "Must" Shortcuts
 
+[![GoDev](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/janpfeifer/must?tab=doc)
+[![GitHub](https://img.shields.io/github/license/janpfeifer/must)](https://github.com/Kwynto/gosession/blob/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/janpfeifer/must)](https://goreportcard.com/report/github.com/janpfeifer/must)
+
 A trivial package to provide a collection of functions shortcuts error returns to panics.
 
 This is handy when doing small programs, or script-like programs in Go, where any failure should just panic.
@@ -9,7 +13,7 @@ It defines:
 ```go
 func M(err error) {
   if err != nil {
-    panice(err)
+    panic(err)
   }
 }
 
@@ -37,12 +41,29 @@ func main() {
 
 Or, if using a Go Jupyter Notebook with [GoNB](https://github.com/janpfeifer/gonb):
 
-```
+```go
 import . "github.com/janpfeifer/must"
 %%
 fName := "my_file.txt"
 contents := M1(os.ReadFile(fName))
 M(os.Remove(fName))
+```
+
+Notice you can also redefine `M`, and all other functions will automatically follow suit:
+
+```go
+import . "github.com/janpfeifer/must"
+
+func init() {
+	M = func(err error) {
+	    if err != nil {
+		    log.Fatalf("Interrupted with error: %+v", err)	
+        }       	
+    }
+}
+
+%%
+contents := M1(os.ReadFile("my_file"))  // This will fail with log.Fatalf if err != nil.
 ```
 
 > [!NOTE]
