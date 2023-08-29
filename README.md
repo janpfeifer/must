@@ -69,3 +69,8 @@ contents := M1(os.ReadFile("my_file"))  // This will fail with log.Fatalf if err
 > [!NOTE]
 > `panic` is like an exception, and it can be caught (with `recover`), if you need it at some point in the "script".
 
+## FAQ
+
+1. What if I don't want to `panic` but do something else ? <br> See example of reassigning `M` to however you want errors to be handled.
+2. What if I don't like `M` as the name for these functions, and want something else ? <br> If it's something generic, just create an issue, I'll quickly create a subpackage with your favourite naming convention.
+
