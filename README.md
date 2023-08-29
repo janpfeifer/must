@@ -45,8 +45,6 @@ contents := M1(os.ReadFile(fName))
 M(os.Remove(fName))
 ```
 
-**Note**: `panic` is like an exception, and it can be caught (with `recover`), if you need it at some point in the "script".
-
 > [!NOTE]
-> Highlights information that users should take into account, even when skimming.
+> `panic` is like an exception, and it can be caught (with `recover`), if you need it at some point in the "script".
 
