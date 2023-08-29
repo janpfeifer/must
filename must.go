@@ -5,7 +5,7 @@ package must
 // This function is used by all other variants (M1, ..., M9), and if you want
 // a different error behavior (like `log.Fatalf` or similar), just reassign M
 // to your particular use, and all other functions will pick it up.
-func M(err error) {
+var M = func(err error) {
 	if err != nil {
 		panic(err)
 	}
