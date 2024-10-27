@@ -7,7 +7,7 @@ package must
 // to your particular use, and all other functions will pick it up.
 var M = func(err error) {
 	if err != nil {
-		panic(err)
+		log.Fatalf("Error: %+v", err)
 	}
 }
 
