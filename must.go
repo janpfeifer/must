@@ -1,5 +1,7 @@
 package must
 
+import "log"
+
 // M panics if `err` is not nil.
 //
 // This function is used by all other variants (M1, ..., M9), and if you want
