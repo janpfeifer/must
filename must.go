@@ -2,14 +2,15 @@ package must
 
 import "log"
 
-// M panics if `err` is not nil.
+// M logs and panics if `err` is not nil.
 //
 // This function is used by all other variants (M1, ..., M9), and if you want
 // a different error behavior (like `log.Fatalf` or similar), just reassign M
 // to your particular use, and all other functions will pick it up.
 var M = func(err error) {
 	if err != nil {
-		log.Fatalf("Error: %+v", err)
+		log.Printf("Must not error: %+v\nPanicking ...\n\n", err)
+		panic(err)
 	}
 }
 

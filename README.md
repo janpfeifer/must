@@ -11,10 +11,9 @@ This is handy when doing small programs, or script-like programs in Go, where an
 It defines:
 
 ```go
-func M(err error) {
+var M = func(err error) 
 	if err != nil {
-		// Log full error message:
-		log.Errorf("Error: %+v", err)
+		log.Printf("%+v", err)
 		panic(err)
 	}
 }
@@ -73,6 +72,8 @@ contents := M1(os.ReadFile("my_file"))  // This will fail with log.Fatalf if err
 
 ## FAQ
 
-1. What if I don't want to `panic` but do something else ? <br> See example of reassigning `M` to however you want errors to be handled.
-2. What if I don't like `M` as the name for these functions, and want something else ? <br> If it's something generic, just create an issue, I'll quickly create a subpackage with your favourite naming convention.
+1. What if I don't want to `panic` but do something else ? <br> 
+   See example of reassigning `M` to however you want errors to be handled.
+2. What if I don't like `M` as the name for these functions, and want something else ? <br> 
+   If it's something generic useful to others, please just create an issue. I'll quickly create a subpackage with your favourite naming convention.
 
