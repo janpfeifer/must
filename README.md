@@ -12,14 +12,16 @@ It defines:
 
 ```go
 func M(err error) {
-  if err != nil {
-    panic(err)
-  }
+	if err != nil {
+		// Log full error message:
+		log.Errorf("Error: %+v", err)
+		panic(err)
+	}
 }
 
 func M1[T any](value T, err error) T {
-  M(err)
-  return value
+	M(err)
+	return value
 }
 
 // And similarly it defines functions M2 ... to ... M9.
